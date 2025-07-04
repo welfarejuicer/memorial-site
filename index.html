@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background: #6c757d;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        footer {
+            margin-top: 20px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>In Loving Memory</h1>
+</header>
+
+<div class="container">
+    <h2>Upload a Photo</h2>
+    <input type="file" accept="image/*" id="imageUpload">
+    <br><br>
+    <img id="memorialImage" src="" alt="Memorial Photo" style="display:none;"/>
+    <p id="message" style="display:none;">Remembering a beautiful soul.</p>
+</div>
+
+<footer>
+    <p>&copy; 2025 Memorial Page</p>
+</footer>
+
+<script>
+    const imageUpload = document.getElementById('imageUpload');
+    const memorialImage = document.getElementById('memorialImage');
+    const message = document.getElementById('message');
+
+    imageUpload.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                memorialImage.src = event.target.result;
+                memorialImage.style.display = 'block';
+                message.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+</body>
+</html>
