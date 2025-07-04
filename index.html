@@ -42,35 +42,14 @@
 </header>
 
 <div class="container">
-    <h2>Upload a Photo</h2>
-    <input type="file" accept="image/*" id="imageUpload">
-    <br><br>
-    <img id="memorialImage" src="" alt="Memorial Photo" style="display:none;"/>
-    <p id="message" style="display:none;">Remembering a beautiful soul.</p>
+    <h2>Memorial Photo</h2>
+    <img id="memorialImage" src="PA010029.jpg" alt="Memorial Photo"/>
+    <p>Remembering a beautiful soul.</p>
 </div>
 
 <footer>
     <p>&copy; 2025 Memorial Page</p>
 </footer>
-
-<script>
-    const imageUpload = document.getElementById('imageUpload');
-    const memorialImage = document.getElementById('memorialImage');
-    const message = document.getElementById('message');
-
-    imageUpload.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                memorialImage.src = event.target.result;
-                memorialImage.style.display = 'block';
-                message.style.display = 'block';
-            }
-            reader.readAsDataURL(file);
-        }
-    });
-</script>
 
 </body>
 </html>
