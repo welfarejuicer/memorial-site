@@ -20,10 +20,10 @@
         .header-text {
             font-size: 24px;
             line-height: 1.5;
-            margin: 10px 0 20px; /* Adjusted margin */
+            margin: 10px 0 20px;
         }
         .indent {
-            margin-left: 10ch; /* Indent using character units */
+            margin-left: 10ch;
         }
         .carousel {
             position: relative;
@@ -39,9 +39,14 @@
         .slide {
             min-width: 100%;
             box-sizing: border-box;
+            height: 400px; /* Set a fixed height for all images */
+            overflow: hidden; /* Hide overflow */
+            position: relative; /* Positioning context for the image */
         }
         img {
             width: 100%;
+            height: 100%; /* Ensure images fill the slide */
+            object-fit: cover; /* Maintain aspect ratio and fill the frame */
             border-radius: 8px;
         }
         .nav-button {
@@ -67,7 +72,7 @@
             transform: translateY(-50%);
         }
         footer {
-            margin-top: 10px; /* Reduced margin */
+            margin-top: 10px;
             color: #6c757d;
             font-size: 20px;
         }
