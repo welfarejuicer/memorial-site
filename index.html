@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memorial Page</title>
+    <title>Memorial Carousel</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,21 +17,59 @@
             color: white;
             padding: 20px;
         }
-        .container {
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .header-text {
+            font-size: 24px;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+        .indent {
+            margin-left: 10ch; /* Indent using character units */
+        }
+        .carousel {
+            position: relative;
             max-width: 600px;
             margin: 20px auto;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
         }
         img {
-            max-width: 100%;
+            width: 100%;
             border-radius: 8px;
+        }
+        .nav-button {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 3px;
+            user-select: none;
+        }
+        .prev {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+        .next {
+            right: 10px;
+            transform: translateY(-50%);
         }
         footer {
             margin-top: 20px;
             color: #6c757d;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -39,25 +77,54 @@
 
 <header>
     <h1>In Loving Memory</h1>
+    <div class="header-text">
+        You are no longer here in body,<br>
+        but you are with us in every moment,<br>
+        every memory,<br>
+        <span class="indent">every heartbeat.</span>
+    </div>
 </header>
 
-<div class="container">
-<h2 style="font-size: 1rem; line-height: 1.5;">
-  You are no longer here in body,<br>
-  but you are with us in every moment,<br>
-  every memory,<br>
-<span style="display: inline-block; margin-left: 5em;">every heartbeat.</span>
-
-</h2>
-
-
-    <img id="memorialImage" src="PA010029.jpg" alt="Memorial Photo"/>
-    <p>1963 - 2021</p>
+<div class="carousel">
+    <div class="slides">
+        <div class="slide"><img src="5e9ee22f-842d-443e-8a0f-23093d5e3c58.JPG" alt="Photo 1"></div>
+        <div class="slide"><img src="78204c96-595a-4856-9663-0698335fc821.JPG" alt="Photo 2"></div>
+        <div class="slide"><img src="IMG_2815.JPG" alt="Photo 3"></div>
+        <div class="slide"><img src="IMG_2916.JPG" alt="Photo 4"></div>
+        <div class="slide"><img src="IMG_3718.JPG" alt="Photo 5"></div>
+        <div class="slide"><img src="IMG_5276.JPG" alt="Photo 6"></div>
+        <div class="slide"><img src="IMG_5325.JPG" alt="Photo 7"></div>
+        <div class="slide"><img src="IMG_8605.JPG" alt="Photo 8"></div>
+    </div>
+    <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
 </div>
 
 <footer>
-    <p>&copy; 2025 Stoop Consulting</p>
+    1963 - 2021
 </footer>
+
+<script>
+    let slideIndex = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        slideIndex = (index + totalSlides) % totalSlides; // Wrap around
+        const offset = -slideIndex * 100; // Calculate offset
+        slides.style.transform = `translateX(${offset}%)`; // Move slides
+    }
+
+    function changeSlide(n) {
+        showSlide(slideIndex + n);
+    }
+
+    // Auto change slides every 5 seconds
+    setInterval(() => changeSlide(1), 5000);
+
+    // Initialize the first slide
+    showSlide(slideIndex);
+</script>
 
 </body>
 </html>
